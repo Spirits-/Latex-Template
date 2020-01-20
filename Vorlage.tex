@@ -1,0 +1,83 @@
+%To whoever uses this: If you don't need custom fonts, you don't need xelatex, and if you don't need code highlighting (minted package), you don't need shell escape. DO NOT USE SHELL ESCAPE WITH LATEX PACKAGES YOU DO NOT TRUST.
+\documentclass[12pt,a4paper]{article}
+    \usepackage{amsmath} %For math and symbols
+    \usepackage{amsfonts}
+    \usepackage{amssymb}
+    \usepackage[margin=2.8cm,headheight=28pt]{geometry} %For paper margins
+    \usepackage{fancyhdr} %For headers
+    \usepackage{datetime} %For displaying date in headers correctly
+    \usepackage{mathspec} %Loads Fontspec too. For changing Fonts and UTF-8 support
+    \usepackage{polyglossia} %Languages support
+    \setdefaultlanguage{german}
+    \usepackage{xcolor} %For colour defining
+    \usepackage{minted} %For code blocks
+    \usepackage[sf]{titlesec} %For title references like \@title
+    \usepackage{graphicx} %For including images
+    %\usepackage{blindtext} %For testing purposes
+    \usepackage{titlesec} %For customizing titles etc.
+    \usepackage[colorlinks=false]{hyperref} %For creating links, in particular for the table of contents
+    \usepackage{tocloft} %For modifying table of contents
+    \usepackage[defaultlines=4,all]{nowidow} %For avoiding "widows" and "orphans"
+    \usepackage{microtype} %Adds micro typing support
+    \usepackage{tikz} %For graphical support
+    
+    \definecolor{background}{HTML}{e7e9db} %For Dark use 2f1e2e
+    %\setlength{\parskip}{1em} %Changes the distance between paragraphs to 1 empty line
+    
+    \titleformat{\paragraph}[runin]{\normalfont\bfseries}{}{}{} %Changes the run-in for paragraphs to bold and main font of the document.
+    \titleformat{\section}{\LARGE\sffamily\bfseries}{\thesection}{1em}{} %Modifies the section format to be sans serif and bold.
+    \titleformat{\subsection}{\Large\sffamily\bfseries}{\thesubsection}{1em}{} %Modifies the subsection format to be sans serif and bold.
+    \titleformat{\subsubsection}{\large\sffamily\bfseries}{\thesubsubsection}{1em}{} %Modifies the subsubsection format to be sans serif and bold.
+    \renewcommand{\baselinestretch}{1.2} %Controls line spacing.
+    
+    \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} %Adds dotted lines to TOC for sections.
+
+    \renewcommand\theFancyVerbLine{\small\arabic{FancyVerbLine}} %Changes the font size of the line numberings in the minted code environment. 
+    \usemintedstyle{paraiso-light} %For Dark use paraiso-dark
+    \setminted{
+        frame=lines,    
+        framesep=2mm,
+        baselinestretch=1.2,
+        %bgcolor=background, %No bg color = white
+        linenos,
+        breaklines=true,
+        autogobble
+    }
+    
+    \newcommand{\rom}[1]{$\underline{\overline{\text{#1}}}$} %Use this command for roman numerals like this \rom{IV}. Creates under and overline to mark it as a numeral. Doesn't work in math mode.
+    \newcommand{\Rom}[1]{\underline{\overline{\text{#1}}}} %Does the same as  \rom{} but only works in math mode.
+    
+    \setmainfont{Charis SIL}
+    \setsansfont{Helvetica Now Display}
+    \setmonofont[Scale=MatchLowercase]{Fira Code Retina}
+    \setmathsfont(Digits,Latin){Charis SIL}
+
+    % "0 ordinary; "1 operator; "2 relation, "3 binary operation    
+    
+    %\Umathcode`×="3 \csname symLatin:m:n\endcsname `× \def\times{×}
+    \Umathcode`+"1 \csname symLatin:m:n\endcsname `+
+    \Umathcode`-"1 \csname symLatin:m:n\endcsname `-
+    \Umathcode`="2 \csname symLatin:m:n\endcsname `=
+    \Umathcode`*"1 \csname symLatin:m:n\endcsname `× \def\times{×}
+    \Umathcode`\%"0 \csname symLatin:m:n\endcsname `\%
+    \Umathcode`["0 \csname symLatin:m:n\endcsname `[
+    \Umathcode`]"0 \csname symLatin:m:n\endcsname `]     
+    
+    \makeatletter
+    \author{Nicolas Sevcik}
+    \title{Titel}
+    \lhead{Nicolas Sevcik \\ 11771357}
+    \rhead{Fach \\ \@title}
+    \lfoot{\today}
+    \rfoot{\thepage}
+    \cfoot{}
+    \renewcommand{\headrulewidth}{0pt}
+    \pagestyle{fancy}
+ 
+\begin{document}
+%For long documents
+%\maketitle
+%\tableofcontents
+%\newpage
+
+\end{document}
