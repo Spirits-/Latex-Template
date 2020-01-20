@@ -13,7 +13,7 @@
     \usepackage{minted} %For code blocks
     \usepackage[sf]{titlesec} %For title references like \@title
     \usepackage{graphicx} %For including images
-    %\usepackage{blindtext} %For testing purposes
+    \usepackage{blindtext} %For testing purposes
     \usepackage{titlesec} %For customizing titles etc.
     \usepackage[colorlinks=false]{hyperref} %For creating links, in particular for the table of contents
     \usepackage{tocloft} %For modifying table of contents
@@ -22,12 +22,14 @@
     \usepackage{tikz} %For graphical support
     
     \definecolor{background}{HTML}{e7e9db} %For Dark use 2f1e2e
-    %\setlength{\parskip}{1em} %Changes the distance between paragraphs to 1 empty line
     
-    \titleformat{\paragraph}[runin]{\normalfont\bfseries}{}{}{} %Changes the run-in for paragraphs to bold and main font of the document.
+    
     \titleformat{\section}{\LARGE\sffamily\bfseries}{\thesection}{1em}{} %Modifies the section format to be sans serif and bold.
     \titleformat{\subsection}{\Large\sffamily\bfseries}{\thesubsection}{1em}{} %Modifies the subsection format to be sans serif and bold.
     \titleformat{\subsubsection}{\large\sffamily\bfseries}{\thesubsubsection}{1em}{} %Modifies the subsubsection format to be sans serif and bold.
+    \titleformat{\paragraph}[runin]{\normalfont\bfseries}{}{}{} %Changes the run-in for paragraphs to bold and main font of the document.
+    \titleformat{\subparagraph}[runin]{\normalfont\bfseries}{}{}{} %Changes the run-in for paragraphs to bold and main font of the document.
+    
     \renewcommand{\baselinestretch}{1.2} %Controls line spacing.
     
     \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}} %Adds dotted lines to TOC for sections.
@@ -44,17 +46,14 @@
         autogobble
     }
     
-    \newcommand{\rom}[1]{$\underline{\overline{\text{#1}}}$} %Use this command for roman numerals like this \rom{IV}. Creates under and overline to mark it as a numeral. Doesn't work in math mode.
-    \newcommand{\Rom}[1]{\underline{\overline{\text{#1}}}} %Does the same as  \rom{} but only works in math mode.
-    
     \setmainfont{Charis SIL}
     \setsansfont{Helvetica Now Display}
     \setmonofont[Scale=MatchLowercase]{Fira Code Retina}
     \setmathsfont(Digits,Latin){Charis SIL}
+    \setmathsfont(Greek){Gentium Plus}
 
+    %Manual replacement of certain symbols in math mode, as XeTeX refuses to use existing symbols from Charis SIL, using Computer Modern glyphs instead. List not exhaustive, added as I encounter them.
     % "0 ordinary; "1 operator; "2 relation, "3 binary operation    
-    
-    %\Umathcode`×="3 \csname symLatin:m:n\endcsname `× \def\times{×}
     \Umathcode`+"1 \csname symLatin:m:n\endcsname `+
     \Umathcode`-"1 \csname symLatin:m:n\endcsname `-
     \Umathcode`="2 \csname symLatin:m:n\endcsname `=
@@ -64,10 +63,10 @@
     \Umathcode`]"0 \csname symLatin:m:n\endcsname `]     
     
     \makeatletter
-    \author{Nicolas Sevcik}
-    \title{Titel}
-    \lhead{Nicolas Sevcik \\ 11771357}
-    \rhead{Fach \\ \@title}
+    \author{John Doe}\let\Author\@author
+    \title{Example document}\let\Title\@title
+    \lhead{\Author \\ MAT-NR}
+    \rhead{Subject \\ \Title}
     \lfoot{\today}
     \rfoot{\thepage}
     \cfoot{}
@@ -75,7 +74,6 @@
     \pagestyle{fancy}
  
 \begin{document}
-%For long documents
 %\maketitle
 %\tableofcontents
 %\newpage
