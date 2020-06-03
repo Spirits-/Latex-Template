@@ -15,6 +15,7 @@
     \usepackage[defaultlines=4,all]{nowidow} %For avoiding "widows" and "orphans"
     \usepackage{microtype} %Adds micro typing support
     \usepackage{tikz} %For graphical support
+    \usepackage[lastpage,user]{zref}
      
     \titleformat{\section}{\LARGE\sffamily\bfseries}{\thesection}{1em}{} %Modifies the section format to be sans serif and bold.
     \titleformat{\subsection}{\Large\sffamily\bfseries}{\thesubsection}{1em}{} %Modifies the subsection format to be sans serif and bold.
@@ -50,7 +51,7 @@
     \lhead{\Author \\ MAT-NR}
     \rhead{Subject \\ \Title}
     \lfoot{\today}
-    \rfoot{\thepage}
+    \rfoot{\thepage/\zpageref{LastPage}}
     \cfoot{}
     \renewcommand{\headrulewidth}{0pt}
     \pagestyle{fancy}
@@ -59,6 +60,5 @@
 %\maketitle
 %\tableofcontents
 %\newpage
-
 
 \end{document}
